@@ -6,19 +6,11 @@ struct Mahasiswa {
     string nim;
     float ipk;
 };
-int ipkTertinggi(Mahasiswa data[], int jumlah) {
-    int indeksIpkTertinggi = 0;
-    
-    for(int i = 1; i < jumlah; i++) {
-        if(data[i].ipk > data[indeksIpkTertinggi].ipk) {
-            indeksIpkTertinggi = i;
-        }
-    }
-    return indeksIpkTertinggi;
-}
+
 int main() {
     Mahasiswa mhs[5];
     cout << "=== DATA MAHASISWA ===" << endl;
+    
     for(int i = 0; i < 5; i++) {
         cout << "\nMahasiswa ke-" << i+1 << endl;
         
@@ -31,13 +23,18 @@ int main() {
         cout << "IPK  : ";
         cin >> mhs[i].ipk;
     }
-    int indeks = ipkTertinggi(mhs, 5);
+    int indeksIpkTertinggi = 0;
+    for(int i = 1; i < 5; i++) {
+        if(mhs[i].ipk > mhs[indeksIpkTertinggi].ipk) {
+            indeksIpkTertinggi = i;
+        }
+    }
     cout << endl;
     cout << "-------------------------------" << endl;
     cout << "Mahasiswa dengan IPK tertinggi:" << endl;
-    cout << "Nama : " << mhs[indeks].nama << endl;
-    cout << "NIM  : " << mhs[indeks].nim << endl;
-    cout << "IPK  : " << mhs[indeks].ipk << endl;
+    cout << "Nama : " << mhs[indeksIpkTertinggi].nama << endl;
+    cout << "NIM  : " << mhs[indeksIpkTertinggi].nim << endl;
+    cout << "IPK  : " << mhs[indeksIpkTertinggi].ipk << endl;
     cout << "-------------------------------" << endl;
     
     return 0;
